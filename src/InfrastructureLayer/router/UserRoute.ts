@@ -18,10 +18,10 @@ import UserRepository from "../repository/UserRepository/UserRepository";
 import GenerateOtp from "../services/GenerateOtp";
 import EncryptPassword from "../services/BcryptPassword";
 import SendEmail from "../services/SendEmail";
-import {AppWriteOtp} from "../services/AppWriteOtp";
+import {AppWriteOtp} from "../services/AppWriteOtp"; 
 import JWTToken from "../services/GenerateToken";
  
-//services
+//services  
 const generateOtp = new GenerateOtp();
 const encryptPassword = new EncryptPassword();
 const sendEmail = new SendEmail();
