@@ -45,10 +45,7 @@ const newsAndBlogsUsecase = new NewsAndBlogsUsecase(
 const newsAndblogsController = new NewsAndBlogsController(newsAndBlogsUsecase);
 
 const route = express.Router();
-
-// Implement CRUD APIs for news and blogs. 
-// Add admin approval system before publishing. 
-// Enable commenting and likes/dislikes on blogs.  
+  
 
 route.post("/FetchNewsAndBlogs", (req, res, next) => {
   newsAndblogsController.FetchNewsAndBlogs(req, res, next);
@@ -62,11 +59,11 @@ route.post("/EditNewsAndBlogs", (req, res, next) => {
 route.post("/DeleteNewsAndBlogs", (req, res, next) => {
   newsAndblogsController.DeleteNewsAndBlogs(req, res, next);
 });
-route.post("/NewsAndBlogsUpvote", (req, res, next) => {
-  newsAndblogsController.NewsAndBlogsUpvote(req, res, next);
+route.post("/NewsAndBlogsLike", (req, res, next) => {
+  newsAndblogsController.NewsAndBlogsLike(req, res, next);
 });
-route.post("/NewsAndBlogsDownvote", (req, res, next) => {
-  newsAndblogsController.NewsAndBlogsDownvote(req, res, next);
+route.post("/NewsAndBlogsDislike", (req, res, next) => {
+  newsAndblogsController.NewsAndBlogsDislike(req, res, next);
 });
 
 

@@ -8,10 +8,10 @@ const threadSchema: Schema<IThread & Document> = new Schema(
     content: { type: String, required: true },
     authorId: { type: String, required: true, ref: 'User' },  
     tags: { type: [String], default: [] },
-    likes: { type: Number, default: 0 },
-    dislikes: { type: Number, default: 0 },
+    upVote: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    downVote: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     shares: { type: Number, default: 0 },
-    commentsCount: { type: Number, default: 0 },
+    comments:  [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     approvalStatus: { type: Boolean, default: false }, 
   }  
 );

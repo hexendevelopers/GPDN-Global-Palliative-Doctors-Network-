@@ -62,11 +62,11 @@ route.post("/EditResource", (req, res, next) => {
 route.post("/DeleteResource", (req, res, next) => {
   resourceController.DeleteResource(req, res, next);
 });
-route.post("/ResourceUpvote", (req, res, next) => {
-  resourceController.ResourceUpvote(req, res, next);
+route.post("/ResourceLike", (req, res, next) => {
+  resourceController.ResourceLike(req, res, next);
 });
-route.post("/ResourceDownvote", (req, res, next) => {
-  resourceController.ResourceDownvote(req, res, next);
+route.post("/ResourceDislike", (req, res, next) => {
+  resourceController.ResourceDislike(req, res, next);
 });
 
 

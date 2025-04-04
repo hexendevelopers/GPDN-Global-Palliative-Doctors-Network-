@@ -75,7 +75,7 @@ route.post("/ThreadSearch", (req, res, next) => {
   threadController.ThreadSearch(req, res, next);
 });
 route.post("/ThreadFilter", (req, res, next) => {
-  // threadController.ThreadFilter(req, res, next);
+  threadController.ThreadFilter(req, res, next);
 });
 
 

@@ -61,7 +61,7 @@ class UserUsecase {
       if (ExistingUser && ExistingUser?.registrationStatus == "pending") {
         return {
           success: false,
-          status: 409,
+          status: 400,
           data: {
             message: "User request already send to  admin.",
           },
@@ -72,7 +72,7 @@ class UserUsecase {
       ) {
         return {
           success: false,
-          status: 409,
+          status: 400,
           data: {
             message: "User already exists.",
           },
@@ -83,7 +83,7 @@ class UserUsecase {
       ) {
         return {
           success: false,
-          status: 409,
+          status: 400,
           data: {
             message: "Admin rejected user already. ",
           },
@@ -198,7 +198,14 @@ class UserUsecase {
 
        this.sendEmail.sendMail(email, otp);
 
-      return "Email sended successfully";
+       return {
+                success: true,
+                status: 200,
+                data: {
+                  message: "Email sended successfully",
+                },
+              };
+
     } catch (error) {
       console.log(error);
     }
@@ -209,12 +216,30 @@ class UserUsecase {
       const userOtp = await this.UserRepository.findUserOtp(email);
 
       if (!userOtp) {
-        return "Otp expired";
+        return {
+          success: false,
+          status: 400,
+          data: {
+            message: "Otp expired",
+          },
+        };
       } else if (userOtp.otp == otp) {
         await this.UserRepository.deleteUserOtp(email);
-        return "Correct Otp";
+        return {
+          success: true,
+          status: 200,
+          data: {
+            message: "Correct Otp",
+          },
+        };
       } else {
-        return "Incorrect Otp";
+        return {
+          success: false,
+          status: 400,
+          data: {
+            message: "Incorrect Otp",
+          },
+        };
       }
     } catch (error) {
       console.log(error);

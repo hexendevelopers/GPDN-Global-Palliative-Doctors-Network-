@@ -1,9 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 
-//controller import
 import UserController from "../../ControllerLayer/UserController/UserController";
 
-//usecase import
 import UserUsecase from "../../UsecaseLayer/UserUsecase/UserUsecase";
 
 // error handle
@@ -11,27 +9,22 @@ import UserUsecase from "../../UsecaseLayer/UserUsecase/UserUsecase";
 // import userAuth  from '../middleware/UserMiddleware';
 
 
-//repository import
 import UserRepository from "../repository/UserRepository/UserRepository";
 
-//services import
 import GenerateOtp from "../services/GenerateOtp";
 import EncryptPassword from "../services/BcryptPassword";
 import SendEmail from "../services/SendEmail";
 import {AppWriteOtp} from "../services/AppWriteOtp"; 
 import JWTToken from "../services/GenerateToken";
  
-//services  
 const generateOtp = new GenerateOtp();
 const encryptPassword = new EncryptPassword();
 const sendEmail = new SendEmail();
 const jwtToken = new JWTToken();
 const appWriteOtp = new AppWriteOtp()
 
-//repositories
 const userRepository = new UserRepository();
 
-//useCases
 const userUsecase = new UserUsecase(
   userRepository,
   generateOtp,
@@ -41,7 +34,6 @@ const userUsecase = new UserUsecase(
   sendEmail
 );
 
-//controllers
 const userController = new UserController(userUsecase);
 
 const route = express.Router();

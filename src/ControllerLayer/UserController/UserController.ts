@@ -74,8 +74,8 @@ class UserController {
       );
       
       return res.json({
+        success: registrationForm?.success,
         status: registrationForm?.status,
-        message: registrationForm?.message,
         data: registrationForm?.data,
       });
     } catch (error) {
@@ -153,13 +153,13 @@ class UserController {
         
         const { email } = req.body;
   
-         await this.UserUsecase.resetORforgotPasswordForm(  email )     
+         const resetORforgotPassword = await this.UserUsecase.resetORforgotPasswordForm(  email )     
 
-       return res.json({
-          status: 200,
-          data: "Email sended successfully",
+        return res.json({
+          success: resetORforgotPassword?.success,
+          status: resetORforgotPassword?.status,
+          data: resetORforgotPassword?.data,
         });
-
         
       }catch(error){
         console.log(error)
@@ -175,11 +175,12 @@ class UserController {
   
         const verifyOtp = await this.UserUsecase.VerifyOtpForm(  otp ,email )
 
+        
         return res.json({
-          status: 200,
-          data: verifyOtp,
+          success: verifyOtp?.success,
+          status: verifyOtp?.status,
+          data: verifyOtp?.data,
         });
-      
 
         
       }catch(error){

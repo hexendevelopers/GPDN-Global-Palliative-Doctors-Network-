@@ -54,6 +54,9 @@ const route = express.Router();
 
 
 // ------------------ User Management
+route.post("adminInvitation", (req , res , next) => {
+  adminController.adminInvitation(req, res , next)
+})
 route.post("/createUser", (req, res, next) => {
   adminController.createUser(req, res, next);
 });
@@ -77,6 +80,10 @@ route.post("/approveORdeclineThreads", (req, res, next) => {
 });
 route.post("/editThreads", (req, res, next) => {
   adminController.editThreads(req, res, next);
+});
+
+route.post("/deleteThreadComment", (req, res, next) => {
+  adminController.deleteThreadComment(req, res, next);
 });
 route.post("/deleteThreads", (req, res, next) => {
   adminController.deleteThreads(req, res, next);

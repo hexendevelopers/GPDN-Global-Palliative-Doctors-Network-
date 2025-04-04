@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
  interface IComment {
     _id?: string;
     threadId?: string;  
@@ -5,8 +7,8 @@
     blogId?:string;
     authorId: string;  
     content: string;
-    likes?: number;
-    dislikes?: number;
+    likes?: mongoose.Types.ObjectId[]; 
+    dislikes?: mongoose.Types.ObjectId[]; 
     createdAt?: Date;
     updatedAt?: Date;
   }

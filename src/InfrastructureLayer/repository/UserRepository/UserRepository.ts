@@ -9,7 +9,11 @@ class UserRepository implements UserRepo {
   async findByEmail(email: string): Promise<IUser | any> {
     try {
       const User = await UserSchema.findOne({ email: email });
-      return User;
+      return {
+        success: false,
+        status: 409,
+        data:User,
+      };
     } catch (error) {
       console.log(error);
       return error;
@@ -45,7 +49,7 @@ class UserRepository implements UserRepo {
 
   async findUserOtp(email: string): Promise<IOtp | any> {
     try {
-      const UserOtp = await OtpSchema.findOne({ email });
+      const UserOtp = await OtpSchema.findOne({ email : email });
       return UserOtp;
     } catch (error) {
       console.log(error);
@@ -55,8 +59,8 @@ class UserRepository implements UserRepo {
 
   async deleteUserOtp(email: string): Promise<void | any> {
     try {
-      await OtpSchema.deleteOne({ email });
-      return "User otp deleted successfully";
+      const deletedUser = await OtpSchema.deleteOne({ email : email });
+      return deletedUser;
     } catch (error) {
       console.log(error);
       return error;

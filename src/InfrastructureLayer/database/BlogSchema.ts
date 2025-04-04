@@ -7,8 +7,8 @@ const blogSchema: Schema<IBlog & Document> = new Schema(
       content: { type: String, required: true },
       authorId: { type: String, required: true, ref: 'User' }, 
       approvalStatus: { type: Boolean, default: false }, 
-      commentsCount: { type: Number, default: 0 },
-      likes: { type: Number, default: 0 },
+      likes:  [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+      dislikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     },
     { timestamps: true } 
   );

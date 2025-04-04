@@ -3,9 +3,9 @@
     title: string;
     content: string;
     authorId: string; 
-    approvalStatus: boolean;
-    commentsCount: number;
-    likes: number;
+    approvalStatus?: boolean;
+    likes?: number;
+    dislikes?:number;
     createdAt?: Date;
     updatedAt?: Date;
   }

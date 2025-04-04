@@ -1,13 +1,15 @@
+import mongoose from "mongoose";
+
  interface IThread {
     _id?: string;
     title: string;
     content: string;
     authorId?: string;  
     tags: string[];
-    likes?: number;
-    dislikes?: number;
+    upVote?: mongoose.Types.ObjectId[];
+    downVote?: mongoose.Types.ObjectId[]; 
     shares?: number;
-    commentsCount?: number;
+    comments?: number;
     approvalStatus?: boolean;
     createdAt?: Date;
     updatedAt?: Date;

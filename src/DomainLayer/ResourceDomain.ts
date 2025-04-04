@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
  interface IResource {
     _id?: string;
     title: string;
@@ -5,7 +7,9 @@
     fileURL: string;  
     authorId: string;  
     category: string;
-    approvalStatus: boolean;
+    likes?:mongoose.Types.ObjectId[]; 
+    dislikes?:mongoose.Types.ObjectId[]; 
+    approvalStatus?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
   }
